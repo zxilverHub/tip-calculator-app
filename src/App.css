@@ -1,0 +1,301 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap');
+
+:root {
+    --strong-cyan: #26c0ab;
+    --dark-cyan: #00494d;
+    --dark-grayish-cyan: #5e7a7d;
+    --grayish-cyan: #7f9c9f;
+    --light-grayish-cyan: #c5e4e7;
+    --very-light-grayish-cyan: #f4fafa;
+    --white: #ffffff;
+
+    --text-input: 1.5rem;
+
+    --weight-sm: 400;
+    --weight-lg: 700;
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Space Mono', monospace;
+    font-weight: 400;
+}
+
+body {
+    width: 100%;
+    height: 100vh;
+    height: 100dvh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background-color: var(--light-grayish-cyan);
+}
+
+#root {
+    width: 100%;
+    height: 100%;
+}
+
+.container {
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.logo {
+    position: absolute;
+    top: 7%;
+}
+
+.calculator {
+    width: 950px;
+    height: 500px;
+    padding: 2.5rem;
+    background-color: var(--white);
+    border-radius: 15px;
+
+    display: grid;
+    grid-template-columns: repeat(2, calc(50% - 1.25rem));
+    gap: 2.5rem;
+}
+
+/* --------------------------------- */
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+input[type="number"] {
+  --moz-appearance: textfield;
+}
+
+
+.inputs {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.bill-card,
+.tip-card,
+.people-card {
+    width: 100%;
+}
+
+.label{
+    font-size: 1rem;
+    color: var(--dark-grayish-cyan);
+    font-weight: var(--weight-lg);
+    margin-bottom: .4rem;
+
+    display: flex;
+    justify-content: space-between;
+    padding-inline: .2rem;
+}
+
+.bill-input,
+.people-input {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    background-color: var(--very-light-grayish-cyan);
+    border-radius: 5px;
+    padding: .375rem 1rem;
+}
+
+#bill,
+#people {
+    width: 100%;
+    border: none;
+    outline: none;
+    background: none;
+    color: var(--dark-cyan);
+    font-size: var(--text-input);
+    font-weight: var(--weight-lg);
+    text-align: right;
+}
+
+#bill::placeholder,
+#people::placeholder,
+.percent-buttons input::placeholder {
+    text-align: right;
+    color: var(--strong-cyan);
+}
+
+.zero {
+    color: rgb(201, 105, 105);
+    font-weight: var(--weight-lg);
+    display: none;
+}
+
+.percent-buttons {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(3, 30%);
+    gap: 1rem;
+}
+
+.percent-buttons button,
+.percent-buttons input {
+    padding: .5rem 1rem;
+    font-size: var(--text-input);
+    font-weight: var(--weight-lg);
+    color: var(--light-grayish-cyan);
+    background-color: var(--dark-cyan);
+    border-radius: 5px;
+    cursor: pointer;
+    border: none;
+    outline: none;
+}
+
+#custom {
+    text-align: right;
+    color: var(--dark-cyan);
+    background-color: var(--very-light-grayish-cyan);
+    border: none;
+    outline: none;
+}
+
+/* ------------------------------- */
+
+.display {
+    background-color: var(--dark-cyan);
+    border-radius: 15px;
+    padding: 2.5rem;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.amounts {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+}
+
+.tip-card-display {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.tip-title {
+    color: var(--white);
+    font-weight: var(--weight-lg);
+    font-size: 1rem;
+}
+
+.per {
+    color: var(--strong-cyan);
+    font-weight: var(--weight-lg);
+}
+
+.tip-amount {
+    color: var(--strong-cyan);
+    font-size: clamp(1.7rem,2.7rem, 2.7rem);
+    font-weight: var(--weight-lg);
+}
+
+.reset {
+    width: 100%;
+    padding: .5rem;
+    font-size: var(--text-input);
+    font-weight: var(--weight-lg);
+    background-color: var(--grayish-cyan);
+    color: var(--dark-cyan);
+    border-radius: 7px;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    user-select: none;
+    opacity: .5;
+    transition: all .3s ease;
+}
+
+.reset:active {
+    background-color: var(--light-grayish-cyan) !important;
+    color: var(--dark-cyan) !important;
+}
+
+/* QUERIES */
+
+@media (max-width: 980px) {
+    .calculator {
+        width: 90%;
+        margin: 0 auto;
+    }
+}
+
+@media (max-width: 830px) {
+    #custom::placeholder,
+    #custom {
+        font-size: 1rem;
+        padding: .5rem;
+    }
+    .tip-amount { font-size: 2rem; }
+    .percent-buttons button {
+        padding-block: .3rem;
+        font-size: 1.3rem;
+    }
+    .display { padding: 1.5rem; }
+    .reset { padding: .1rem; }
+}
+
+@media (max-width: 700px) {
+    .tip-amount { font-size: 1.6rem; }
+    .percent-buttons button {
+        padding: .3rem;
+        font-size: 1.3rem;
+    }
+}
+
+@media (max-width: 550px) {
+    .logo {
+        position: relative;
+        margin-bottom: 4rem;
+        top: 2rem;
+    }
+    .calculator {
+        position: relative;
+        width: 100%;
+        margin: 0;
+
+        display: flex;
+        flex-direction: column;
+        height: auto;
+
+        padding: 1rem;
+    }
+
+    .amounts,
+    .inputs {
+        gap: 1rem;
+    }
+
+    .display { gap: 1rem; }
+}
+
+/* TOGLLE */
+
+.input-focus {outline: 3px solid var(--strong-cyan); }
+.input-error {outline: 3px solid rgb(201, 105, 105); }
+.block { display: block; }
+.selected {
+    background-color: var(--light-grayish-cyan) !important;
+    color: var(--dark-cyan) !important;
+}
+.opc { opacity: 1; }
